@@ -5,6 +5,5 @@ import org.springframework.stereotype.Repository;
 import com.mccserverapp.project.Model.Employee;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Integer>
-{
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 }

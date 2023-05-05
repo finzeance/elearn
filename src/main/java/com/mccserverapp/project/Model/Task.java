@@ -33,10 +33,11 @@ public class Task {
 
     @Column(name = "description")
     private String description;
+
     private String file; // belom pasti
 
-    @OneToMany
+    @OneToMany(mappedBy = "task")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<Task> task;
+    private List<TaskAssignment> taskAssignment;
 
 }

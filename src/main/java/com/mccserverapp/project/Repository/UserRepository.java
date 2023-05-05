@@ -9,6 +9,6 @@ import com.mccserverapp.project.Model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-Optional<User> findByUsernameEmployee_Email(String username, String email);
+    Optional<User> findByUsernameEmployee_Email(String username, String email);
 
 }

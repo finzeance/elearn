@@ -26,7 +26,7 @@ public class TaskAssignment {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "task_id", nullable = false)
+    @JoinColumn(name = "task_id", referencedColumnName = "task_id", nullable = false)
     private Task task;
 
     @ManyToOne
