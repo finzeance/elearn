@@ -1,49 +1,49 @@
-// package com.mccserverapp.project.Service;
+package com.mccserverapp.project.Service;
 
-// import java.util.List;
+import java.util.List;
 
-// import org.springframework.http.HttpStatus;
-// import org.springframework.stereotype.Service;
-// import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
-// import com.mccserverapp.project.Model.Employee;
-// import com.mccserverapp.project.Repository.EmployeeRepository;
+import com.mccserverapp.project.Model.Employee;
+import com.mccserverapp.project.Repository.EmployeeRepository;
 
-// import lombok.AllArgsConstructor;
+import lombok.AllArgsConstructor;
 
-// @Service
-// @AllArgsConstructor
-// public class EmployeeService {
+@Service
+@AllArgsConstructor
+public class EmployeeService {
 
-// private EmployeeRepository employeeRepository;
+private EmployeeRepository employeeRepository;
 
-// public List<Employee> getAll() {
-// return employeeRepository.findAll();
-// }
+public List<Employee> getAll() {
+return employeeRepository.findAll();
+}
 
-// public Employee getById(Integer id) {
-// return employeeRepository
-// .findById(id)
-// .orElseThrow(() -> new ResponseStatusException(
-// HttpStatus.NOT_FOUND,
-// "Employee not found!!"));
+public Employee getById(Integer id) {
+return employeeRepository
+.findById(id)
+.orElseThrow(() -> new ResponseStatusException(
+HttpStatus.NOT_FOUND,
+"Employee not found!!"));
 
-// }
+}
 
-// public Employee create(Employee employee) {
-// return employeeRepository.save(employee);
-// }
+public Employee create(Employee employee) {
+return employeeRepository.save(employee);
+}
 
-// public Employee update(Integer id, Employee employee) {
-// getById(id);
-// employee.setId(id);
-// return employeeRepository.save(employee);
-// }
+public Employee update(Integer id, Employee employee) {
+getById(id);
+employee.setId(id);
+return employeeRepository.save(employee);
+}
 
-// public Employee delete(Integer id) {
-// Employee employee = getById(id);
-// employeeRepository.delete(employee);
-// return employee;
-// }
+public Employee delete(Integer id) {
+Employee employee = getById(id);
+employeeRepository.delete(employee);
+return employee;
+}
 
-// }
+}
