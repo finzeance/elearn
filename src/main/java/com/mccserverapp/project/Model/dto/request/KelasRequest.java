@@ -11,6 +11,7 @@ public class KelasRequest {
     private Integer quota;
     // private Date startDate;
     // private Date endDate;
+    // private Boolean statusActive;
     private Integer programId;
 
 }

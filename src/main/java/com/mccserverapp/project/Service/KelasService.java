@@ -34,15 +34,16 @@ public class KelasService {
     }
 
     // membuat kelas dari program
-    // public Kelas createWithDTO(KelasRequest kelasRequest) {
-    // Kelas kelas1 = new Kelas();
-    // kelas1.setName(kelasRequest.getName());
-    // kelas1.setQuota(kelasRequest.getQuota());
+    public Kelas createWithDTO(KelasRequest kelasRequest) {
+        Kelas kelas1 = new Kelas();
+        kelas1.setName(kelasRequest.getName());
+        kelas1.setQuota(kelasRequest.getQuota());
+        // kelas1.setStatusActive(kelasRequest.getStatusActive());
 
-    // Program program = programService.getById(kelasRequest.getProgramId());
-    // kelas1.setProgram(program);
-    // return kelasRepository.save(kelas1);
-    // }
+        Program program = programService.getById(kelasRequest.getProgramId());
+        kelas1.setProgram(program);
+        return kelasRepository.save(kelas1);
+    }
 
     public Kelas update(Integer id, Kelas kelas) {
         getById(id);
