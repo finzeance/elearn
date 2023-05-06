@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mccserverapp.project.Model.TaskAssignment;
+import com.mccserverapp.project.Model.dto.request.TaskAssignmentRequest;
 import com.mccserverapp.project.Service.TaskAssignmentService;
 
 import lombok.AllArgsConstructor;
@@ -36,6 +37,11 @@ public class TaskAssignmentController {
     @PostMapping
     public TaskAssignment create(@RequestBody TaskAssignment taskAssignment) {
         return taskAssignmentService.create(taskAssignment);
+    }
+
+    @PostMapping("/dto")
+    public TaskAssignment createWithDTO(@RequestBody TaskAssignmentRequest taskAssignmentRequest) {
+        return taskAssignmentService.createWithDTO(taskAssignmentRequest);
     }
 
     @PutMapping("/{id}")

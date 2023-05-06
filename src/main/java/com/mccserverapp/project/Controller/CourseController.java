@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mccserverapp.project.Model.Course;
+import com.mccserverapp.project.Model.dto.request.CourseRequest;
 import com.mccserverapp.project.Service.CourseService;
 
 import lombok.AllArgsConstructor;
@@ -36,6 +37,11 @@ public class CourseController {
     @PostMapping
     public Course create(@RequestBody Course course) {
         return courseService.create(course);
+    }
+
+    @PostMapping("/dto")
+    public Course createWithDTO(@RequestBody CourseRequest courseRequest) {
+        return courseService.createWithDTO(courseRequest);
     }
 
     @PutMapping("/{id}")

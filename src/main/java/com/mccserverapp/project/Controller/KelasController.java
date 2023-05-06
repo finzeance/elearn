@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mccserverapp.project.Model.Kelas;
 import com.mccserverapp.project.Model.Program;
+import com.mccserverapp.project.Model.dto.request.KelasRequest;
 import com.mccserverapp.project.Service.KelasService;
 
 import lombok.AllArgsConstructor;
@@ -37,6 +38,11 @@ public class KelasController {
     @PostMapping
     public Kelas create(@RequestBody Kelas kelas) {
         return kelasService.create(kelas);
+    }
+
+    @PostMapping("/dto")
+    public Kelas createWithDTO(@RequestBody KelasRequest kelasRequest) {
+        return kelasService.createWithDTO(kelasRequest);
     }
 
     @PutMapping("/{id}")

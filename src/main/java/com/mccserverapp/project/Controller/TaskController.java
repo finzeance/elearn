@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mccserverapp.project.Model.Task;
+import com.mccserverapp.project.Model.dto.request.TaskRequest;
 import com.mccserverapp.project.Service.TaskService;
 
 import lombok.AllArgsConstructor;
@@ -36,6 +37,11 @@ public class TaskController {
     @PostMapping
     public Task create(@RequestBody Task task) {
         return taskService.create(task);
+    }
+
+    @PostMapping("/dto")
+    public Task createWithDTO(@RequestBody TaskRequest taskRequest) {
+        return taskService.createWithDTO(taskRequest);
     }
 
     @PutMapping("/{id}")

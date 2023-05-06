@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mccserverapp.project.Model.ClassSegment;
+import com.mccserverapp.project.Model.dto.request.ClassSegmentRequest;
 import com.mccserverapp.project.Service.ClassSegmentService;
 
 import lombok.AllArgsConstructor;
@@ -36,6 +37,11 @@ public class ClassSegmentController {
     @PostMapping
     public ClassSegment create(@RequestBody ClassSegment classSegment) {
         return classSegmentService.create(classSegment);
+    }
+
+    @PostMapping("/dto")
+    public ClassSegment createWithDTO(ClassSegmentRequest classSegmentRequest) {
+        return classSegmentService.createWithDTO(classSegmentRequest);
     }
 
     @PutMapping("/{id}")

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mccserverapp.project.Model.UserClass;
+import com.mccserverapp.project.Model.dto.request.UserClassRequest;
 import com.mccserverapp.project.Service.UserClassService;
 
 import lombok.AllArgsConstructor;
@@ -36,6 +37,11 @@ public class UserClassController {
     @PostMapping
     public UserClass create(@RequestBody UserClass userClass) {
         return userClassService.create(userClass);
+    }
+
+    @PostMapping("/dto")
+    public UserClass createWithDTO(@RequestBody UserClassRequest userClassRequest) {
+        return userClassService.createWithDTO(userClassRequest);
     }
 
     @PutMapping("/{id}")
