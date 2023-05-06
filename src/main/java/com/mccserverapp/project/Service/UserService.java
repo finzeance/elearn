@@ -4,8 +4,11 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import com.mccserverapp.project.Model.Kelas;
 import com.mccserverapp.project.Model.Role;
 import com.mccserverapp.project.Model.User;
+import com.mccserverapp.project.Model.UserClass;
 import com.mccserverapp.project.Repository.UserRepository;
 import lombok.AllArgsConstructor;
 
@@ -14,6 +17,7 @@ import lombok.AllArgsConstructor;
 public class UserService {
 
     private RoleService roleService;
+
     private UserRepository userRepository;
 
     public List<User> getAll() {
@@ -46,6 +50,13 @@ public class UserService {
         roles.add(roleService.getById(role.getId()));
         user.setRole(roles);
         return userRepository.save(user);
-
     }
+
+    // public User addClass(Integer id, Kelas kelas){
+    // User user = getById(id);
+    // List<UserClass> userClass = user.getUserClass();
+    // userClass.add(userClass.getById(kelas.getId()));
+    // user.setUserClass(userClass);
+    // return userRepository.save(user);
+    // }
 }

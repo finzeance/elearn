@@ -39,6 +39,10 @@ public class Segment {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<ClassSegment> classSegment;
 
+    @OneToMany(mappedBy = "segment")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Segment> segment;
+
     // @ManyToMany(mappedBy = "segment")
     // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     // private List<Class> class1;

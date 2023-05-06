@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -39,5 +41,9 @@ public class Task {
     @OneToMany(mappedBy = "task")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<TaskAssignment> taskAssignment;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
 
 }

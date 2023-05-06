@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class RoleService {
-    private RoleService roleService;
+
     private RoleRepository roleRepository;
 
     public List<Role> getAll() {
