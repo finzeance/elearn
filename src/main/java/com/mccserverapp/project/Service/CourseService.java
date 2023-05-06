@@ -32,15 +32,15 @@ public class CourseService {
     }
 
     // membuat course dari segment
-    // public Course createWithDTO(CourseRequest courseRequest) {
-    // Course course = new Course();
-    // course.setName(courseRequest.getName());
-    // course.setDescription(courseRequest.getDescription());
+    public Course createWithDTO(CourseRequest courseRequest) {
+        Course course = new Course();
+        course.setName(courseRequest.getName());
+        course.setDescription(courseRequest.getDescription());
 
-    // Segment segment = segmentService.getById(courseRequest.getSegmentId());
-    // course.setSegment(segment);
-    // return courseRepository.save(course);
-    // }
+        Segment segment = segmentService.getById(courseRequest.getSegmentId());
+        course.setSegment(segment);
+        return courseRepository.save(course);
+    }
 
     public Course update(Integer id, Course course) {
         getById(id);
