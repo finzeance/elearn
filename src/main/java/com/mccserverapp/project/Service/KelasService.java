@@ -2,6 +2,7 @@ package com.mccserverapp.project.Service;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -16,6 +17,7 @@ import com.mccserverapp.project.Repository.KelasRepository;
 @Service
 public class KelasService {
 
+    private ModelMapper modelMapper;
     private ProgramService programService;
     private KelasRepository kelasRepository;
 
@@ -43,6 +45,13 @@ public class KelasService {
         Program program = programService.getById(kelasRequest.getProgramId());
         kelas1.setProgram(program);
         return kelasRepository.save(kelas1);
+    }
+
+    // membuat kelas menggunakan dto modelMapper
+    public Kelas createWithModelMapper(KelasRequest kelasRequest) {
+        Kelas kelas = modelMapper.map(kelasRequest, Kelas.class);
+        kelas.setProgram(programService.getById(kelasRequest.getProgramId()));
+        return kelasRepository.save(kelas);
     }
 
     public Kelas update(Integer id, Kelas kelas) {
