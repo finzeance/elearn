@@ -1,14 +1,18 @@
 package com.mccserverapp.project.Service;
 
 import java.util.List;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.mccserverapp.project.Model.Employee;
 import com.mccserverapp.project.Model.Kelas;
 import com.mccserverapp.project.Model.Role;
 import com.mccserverapp.project.Model.User;
 import com.mccserverapp.project.Model.UserClass;
+import com.mccserverapp.project.Model.dto.request.UserRequest;
 import com.mccserverapp.project.Repository.UserRepository;
 import lombok.AllArgsConstructor;
 
@@ -17,7 +21,7 @@ import lombok.AllArgsConstructor;
 public class UserService {
 
     private RoleService roleService;
-
+    private ModelMapper modelMapper;
     private UserRepository userRepository;
 
     public List<User> getAll() {
@@ -30,6 +34,19 @@ public class UserService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Data user not found!!!"));
 
+    }
+
+    public User create(User user) {
+        return userRepository.save(user);
+    }
+
+    public User createWithModelMapper(UserRequest userRequest) {
+        User user = modelMapper.map(userRequest, User.class);
+        Employee employee = modelMapper.map(userRequest, Employee.class);
+
+        employee.setUser(user);
+        user.setEmployee(employee);
+        return userRepository.save(user);
     }
 
     public User update(Integer id, User user) {
