@@ -2,6 +2,7 @@ package com.mccserverapp.project.Service;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -11,9 +12,13 @@ import com.mccserverapp.project.Model.Segment;
 import com.mccserverapp.project.Model.dto.request.CourseRequest;
 import com.mccserverapp.project.Repository.CourseRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class CourseService {
 
+    private ModelMapper modelMapper;
     private SegmentService segmentService;
     private CourseRepository courseRepository;
 
@@ -39,6 +44,12 @@ public class CourseService {
 
         Segment segment = segmentService.getById(courseRequest.getSegmentId());
         course.setSegment(segment);
+        return courseRepository.save(course);
+    }
+
+    public Course createWithModelMapper(CourseRequest courseRequest) {
+        Course course = modelMapper.map(courseRequest, Course.class);
+        course.setSegment(segmentService.getById(courseRequest.getSegmentId()));
         return courseRepository.save(course);
     }
 

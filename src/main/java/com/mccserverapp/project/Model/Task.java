@@ -1,5 +1,6 @@
 package com.mccserverapp.project.Model;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -45,5 +46,11 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
+
+    @Column(name = "start_time")
+    private LocalDateTime startTime;
+
+    @Column(name = "end_time")
+    private LocalDateTime endTime;
 
 }

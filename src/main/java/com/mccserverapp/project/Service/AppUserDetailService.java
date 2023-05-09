@@ -17,7 +17,7 @@ public class AppUserDetailService implements UserDetailsService {
 
     private UserRepository userRepository;
 
-    public UserDetails loadByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository
                 .findByUsernameOrEmployee_Email(username, username)
                 .orElseThrow(() -> new UsernameNotFoundException("Username or email is incorrect!!!"));

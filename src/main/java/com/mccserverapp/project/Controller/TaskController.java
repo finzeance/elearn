@@ -44,6 +44,11 @@ public class TaskController {
         return taskService.createWithDTO(taskRequest);
     }
 
+    @PostMapping("/modelmapper")
+    public Task createWithModelMapper(@RequestBody TaskRequest taskRequest) {
+        return taskService.createWithModelMapper(taskRequest);
+    }
+
     @PutMapping("/{id}")
     public Task update(@PathVariable Integer id, @RequestBody Task task) {
         return taskService.update(id, task);

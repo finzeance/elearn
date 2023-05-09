@@ -1,5 +1,6 @@
 package com.mccserverapp.project.Model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -42,6 +43,12 @@ public class Segment {
     @OneToMany(mappedBy = "segment")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Segment> segment;
+
+    @Column(name = "start_date", nullable = false)
+    private LocalDate startDate;
+
+    @Column(name = "end_date", nullable = false)
+    private LocalDate endDate;
 
     // @ManyToMany(mappedBy = "segment")
     // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

@@ -14,7 +14,10 @@ import com.mccserverapp.project.Model.UserClass;
 import com.mccserverapp.project.Model.dto.request.KelasRequest;
 import com.mccserverapp.project.Repository.KelasRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class KelasService {
 
     private ModelMapper modelMapper;

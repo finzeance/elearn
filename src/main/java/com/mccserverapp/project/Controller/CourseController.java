@@ -44,6 +44,11 @@ public class CourseController {
         return courseService.createWithDTO(courseRequest);
     }
 
+    @PostMapping("/modelmapper")
+    public Course createWithModelMapper(@RequestBody CourseRequest courseRequest) {
+        return courseService.createWithModelMapper(courseRequest);
+    }
+
     @PutMapping("/{id}")
     public Course update(@PathVariable Integer id, @RequestBody Course course) {
         return courseService.update(id, course);

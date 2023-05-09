@@ -45,6 +45,11 @@ public class KelasController {
         return kelasService.createWithDTO(kelasRequest);
     }
 
+    @PostMapping("/modelmapper")
+    public Kelas createWithModelMapper(@RequestBody KelasRequest kelasRequest) {
+        return kelasService.createWithModelMapper(kelasRequest);
+    }
+
     @PutMapping("/{id}")
     public Kelas update(@PathVariable Integer id, @RequestBody Kelas kelas) {
         return kelasService.update(id, kelas);

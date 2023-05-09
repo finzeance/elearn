@@ -1,5 +1,6 @@
 package com.mccserverapp.project.Model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -56,6 +57,12 @@ public class Kelas {
     @ManyToOne
     @JoinColumn(name = "program_id", nullable = false)
     private Program program;
+
+    @Column(name = "start_date", nullable = false)
+    private LocalDate startDate;
+
+    @Column(name = "end_date", nullable = false)
+    private LocalDate endDate;
 
     // @ManyToMany(fetch = FetchType.EAGER)
     // @JoinTable(name = "class_segment", joinColumns = @JoinColumn(name =

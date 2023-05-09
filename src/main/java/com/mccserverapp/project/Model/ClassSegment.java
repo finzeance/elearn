@@ -1,5 +1,7 @@
 package com.mccserverapp.project.Model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +28,7 @@ public class ClassSegment {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "class_id", referencedColumnName = "class_id", nullable = false)
+    @JoinColumn(name = "class_id", nullable = false)
     private Kelas kelas;
 
     @ManyToOne
@@ -37,5 +39,11 @@ public class ClassSegment {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @Column(name = "start_date", nullable = false)
+    private LocalDate startDate;
+
+    @Column(name = "end_date", nullable = false)
+    private LocalDate endDate;
 
 }

@@ -9,7 +9,10 @@ import org.springframework.web.server.ResponseStatusException;
 import com.mccserverapp.project.Model.Program;
 import com.mccserverapp.project.Repository.ProgramRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class ProgramService {
 
     private ProgramRepository programRepository;

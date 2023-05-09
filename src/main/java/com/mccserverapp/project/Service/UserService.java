@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.mccserverapp.project.Model.Employee;
-import com.mccserverapp.project.Model.Kelas;
 import com.mccserverapp.project.Model.Role;
 import com.mccserverapp.project.Model.User;
 import com.mccserverapp.project.Model.UserClass;
@@ -23,6 +22,7 @@ public class UserService {
     private RoleService roleService;
     private ModelMapper modelMapper;
     private UserRepository userRepository;
+    // private PasswordEncoder passwordEncoder;
 
     public List<User> getAll() {
         return userRepository.findAll();
@@ -44,8 +44,12 @@ public class UserService {
         User user = modelMapper.map(userRequest, User.class);
         Employee employee = modelMapper.map(userRequest, Employee.class);
 
+        // user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         employee.setUser(user);
         user.setEmployee(employee);
+
+        // set password
         return userRepository.save(user);
     }
 

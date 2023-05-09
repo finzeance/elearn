@@ -44,6 +44,11 @@ public class ClassSegmentController {
         return classSegmentService.createWithDTO(classSegmentRequest);
     }
 
+    @PostMapping("/modelmapper")
+    public ClassSegment createWithModelMapper(ClassSegment classSegment) {
+        return classSegmentService.createWithModelMapper(classSegment);
+    }
+
     @PutMapping("/{id}")
     public ClassSegment update(@PathVariable Integer id, @RequestBody ClassSegment classSegment) {
         return classSegmentService.update(id, classSegment);

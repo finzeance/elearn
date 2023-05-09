@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mccserverapp.project.Model.Employee;
+import com.mccserverapp.project.Model.dto.request.EmployeeRequest;
 import com.mccserverapp.project.Service.EmployeeService;
 
 import lombok.AllArgsConstructor;
@@ -36,6 +37,11 @@ public class EmployeeController {
     @PostMapping
     public Employee create(@RequestBody Employee employee) {
         return employeeService.create(employee);
+    }
+
+    @PostMapping("/modelmapper")
+    public Employee createWithModelMapper(@RequestBody EmployeeRequest employeeRequest) {
+        return employeeService.createWithModelMapper(employeeRequest);
     }
 
     @PutMapping("/{id}")

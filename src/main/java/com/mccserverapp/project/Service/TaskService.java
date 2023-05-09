@@ -2,6 +2,7 @@ package com.mccserverapp.project.Service;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -11,9 +12,13 @@ import com.mccserverapp.project.Model.Task;
 import com.mccserverapp.project.Model.dto.request.TaskRequest;
 import com.mccserverapp.project.Repository.TaskRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class TaskService {
 
+    private ModelMapper modelMapper;
     private CourseService courseService;
     private TaskRepository taskRepository;
 
@@ -38,6 +43,12 @@ public class TaskService {
 
         Course course = courseService.getById(taskRequest.getCourseId());
         task.setCourse(course);
+        return taskRepository.save(task);
+    }
+
+    public Task createWithModelMapper(TaskRequest taskRequest) {
+        Task task = modelMapper.map(taskRequest, Task.class);
+        task.setCourse(courseService.getById(taskRequest.getCourseId()));
         return taskRepository.save(task);
     }
 

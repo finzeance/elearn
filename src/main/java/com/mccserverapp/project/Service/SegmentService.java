@@ -9,7 +9,10 @@ import org.springframework.web.server.ResponseStatusException;
 import com.mccserverapp.project.Model.Segment;
 import com.mccserverapp.project.Repository.SegmentRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class SegmentService {
 
     private SegmentRepository segmentRepository;

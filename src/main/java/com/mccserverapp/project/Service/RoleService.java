@@ -7,9 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.mccserverapp.project.Model.Role;
-import com.mccserverapp.project.Model.User;
 import com.mccserverapp.project.Repository.RoleRepository;
-import com.mccserverapp.project.Repository.UserRepository;
+
 
 import lombok.AllArgsConstructor;
 
