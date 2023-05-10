@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -20,6 +21,7 @@ public class EmployeeService {
 
     private ModelMapper modelMapper;
     private EmployeeRepository employeeRepository;
+    private PasswordEncoder passwordEncoder;
 
     public List<Employee> getAll() {
         return employeeRepository.findAll();
@@ -41,12 +43,12 @@ public class EmployeeService {
     public Employee createWithModelMapper(EmployeeRequest employeeRequest) {
         Employee employee = modelMapper.map(employeeRequest, Employee.class);
         User user = modelMapper.map(employeeRequest, User.class);
+        user.setPassword(passwordEncoder.encode(employeeRequest.getPassword()));
 
         employee.setUser(user);
         user.setEmployee(employee);
 
         return employeeRepository.save(employee);
-
     }
 
     public Employee update(Integer id, Employee employee) {

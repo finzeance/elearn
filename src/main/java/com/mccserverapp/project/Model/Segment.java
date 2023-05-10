@@ -42,7 +42,7 @@ public class Segment {
 
     @OneToMany(mappedBy = "segment")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<Segment> segment;
+    private List<Course> course;
 
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;

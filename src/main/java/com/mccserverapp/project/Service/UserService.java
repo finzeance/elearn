@@ -1,9 +1,11 @@
 package com.mccserverapp.project.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -22,7 +24,7 @@ public class UserService {
     private RoleService roleService;
     private ModelMapper modelMapper;
     private UserRepository userRepository;
-    // private PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     public List<User> getAll() {
         return userRepository.findAll();
@@ -37,6 +39,9 @@ public class UserService {
     }
 
     public User create(User user) {
+        List<Role> role = new ArrayList<>();
+        role.add(roleService.getById(1));
+        user.setRole(user.getRole());
         return userRepository.save(user);
     }
 
@@ -44,12 +49,23 @@ public class UserService {
         User user = modelMapper.map(userRequest, User.class);
         Employee employee = modelMapper.map(userRequest, Employee.class);
 
-        // user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-        employee.setUser(user);
-        user.setEmployee(employee);
-
         // set password
+        user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+
+        List<Role> role = new ArrayList<>();
+        role.add(roleService.getById(1));
+        employee.setUser(user);
+
+        user.setEmployee(employee);
+        user.setRole(user.getRole());
+
+        // List<Role> role = new ArrayList<>();
+        // role.add(roleService.getById(1));
+        // user.setRole(role);
+
+        // employee.setUser(user);
+        // user.setEmployee(employee);
+
         return userRepository.save(user);
     }
 

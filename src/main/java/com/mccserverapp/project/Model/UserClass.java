@@ -29,14 +29,12 @@ public class UserClass {
     @Column(name = "user_class_id")
     private Integer id;
 
-    @OneToOne // (mappedBy = "user_class", cascade = CascadeType.ALL)
-    @MapsId
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @JoinColumn(name = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id", unique = true, nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "class_id", referencedColumnName = "class_id", nullable = false)
+    @JoinColumn(name = "class_id", nullable = false)
     private Kelas kelas;
 
 }
