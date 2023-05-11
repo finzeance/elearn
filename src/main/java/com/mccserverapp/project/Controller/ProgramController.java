@@ -2,6 +2,7 @@ package com.mccserverapp.project.Controller;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,30 +20,36 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/program")
+@PreAuthorize("hasRole('ADMIN')")
 public class ProgramController {
 
     private ProgramService programService;
 
+    @PreAuthorize("hasAuthority('READ_ADMIN')")
     @GetMapping
     public List<Program> getAll() {
         return programService.getAll();
     }
-
+    
+    @PreAuthorize("hasAuthority('READ_ADMIN')")
     @GetMapping("/{id}")
     public Program getById(@PathVariable Integer id) {
         return programService.getById(id);
     }
-
+    
+    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
     @PostMapping
     public Program create(@RequestBody Program program) {
         return programService.create(program);
     }
-
+    
+    @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
     @PutMapping("/{id}")
     public Program update(@PathVariable Integer id, @RequestBody Program program) {
         return programService.update(id, program);
     }
-
+    
+    @PreAuthorize("hasAuthority('DELETE_ADMIN')")
     @DeleteMapping("/{id}")
     public Program delete(@PathVariable Integer id) {
         return programService.delete(id);
