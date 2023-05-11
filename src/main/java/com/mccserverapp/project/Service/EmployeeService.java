@@ -1,5 +1,6 @@
 package com.mccserverapp.project.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.mccserverapp.project.Model.Employee;
+import com.mccserverapp.project.Model.Role;
 import com.mccserverapp.project.Model.User;
 import com.mccserverapp.project.Model.dto.request.EmployeeRequest;
 import com.mccserverapp.project.Repository.EmployeeRepository;
@@ -22,6 +24,7 @@ public class EmployeeService {
     private ModelMapper modelMapper;
     private EmployeeRepository employeeRepository;
     private PasswordEncoder passwordEncoder;
+    private RoleService roleService;
 
     public List<Employee> getAll() {
         return employeeRepository.findAll();
@@ -45,6 +48,9 @@ public class EmployeeService {
         User user = modelMapper.map(employeeRequest, User.class);
         user.setPassword(passwordEncoder.encode(employeeRequest.getPassword()));
 
+        List<Role> role = new ArrayList<>();
+        role.add(roleService.getById(1));
+        user.setRole(role);
         employee.setUser(user);
         user.setEmployee(employee);
 
