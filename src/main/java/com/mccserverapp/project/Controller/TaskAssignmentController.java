@@ -44,6 +44,11 @@ public class TaskAssignmentController {
         return taskAssignmentService.createWithDTO(taskAssignmentRequest);
     }
 
+    @PostMapping("/modelmapper")
+    public TaskAssignment createWithModelMapper(@RequestBody TaskAssignmentRequest taskAssignmentRequest) {
+        return taskAssignmentService.createWithModelMapper(taskAssignmentRequest);
+    }
+
     @PutMapping("/{id}")
     public TaskAssignment update(@PathVariable Integer id, @RequestBody TaskAssignment taskAssignment) {
         return taskAssignmentService.update(id, taskAssignment);

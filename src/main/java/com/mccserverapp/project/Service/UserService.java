@@ -54,18 +54,9 @@ public class UserService {
 
         List<Role> role = new ArrayList<>();
         role.add(roleService.getById(1));
+        user.setRole(role);
         employee.setUser(user);
-
         user.setEmployee(employee);
-        user.setRole(user.getRole());
-
-        // List<Role> role = new ArrayList<>();
-        // role.add(roleService.getById(1));
-        // user.setRole(role);
-
-        // employee.setUser(user);
-        // user.setEmployee(employee);
-
         return userRepository.save(user);
     }
 

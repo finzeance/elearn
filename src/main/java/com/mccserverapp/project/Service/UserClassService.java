@@ -2,6 +2,7 @@ package com.mccserverapp.project.Service;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -12,12 +13,16 @@ import com.mccserverapp.project.Model.UserClass;
 import com.mccserverapp.project.Model.dto.request.UserClassRequest;
 import com.mccserverapp.project.Repository.UserClassRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class UserClassService {
 
     private UserService userService;
     private KelasService kelasService;
     private UserClassRepository userClassRepository;
+    private ModelMapper modelMapper;
 
     public List<UserClass> getAll() {
         return userClassRepository.findAll();
@@ -42,6 +47,13 @@ public class UserClassService {
         userClass.setUser(user);
         Kelas kelas = kelasService.getById(userClassRequest.getClassId());
         userClass.setKelas(kelas);
+        return userClassRepository.save(userClass);
+    }
+
+    public UserClass createWithModelMapper(UserClassRequest userClassRequest) {
+        UserClass userClass = modelMapper.map(userClassRequest, UserClass.class);
+        userClass.setUser(userService.getById(userClassRequest.getUserId()));
+        userClass.setKelas(kelasService.getById(userClassRequest.getClassId()));
         return userClassRepository.save(userClass);
     }
 

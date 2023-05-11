@@ -1,5 +1,7 @@
 package com.mccserverapp.project.Model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,4 +35,9 @@ public class TaskAssignment {
     @JoinColumn(name = "class_id", referencedColumnName = "class_id", nullable = false)
     private Kelas kelas;
 
+    @Column(name = "start_time")
+    private LocalDateTime startTime;
+
+    @Column(name = "end_time")
+    private LocalDateTime endTime;
 }

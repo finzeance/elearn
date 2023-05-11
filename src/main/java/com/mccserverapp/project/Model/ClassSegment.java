@@ -45,5 +45,4 @@ public class ClassSegment {
 
     @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
-
 }

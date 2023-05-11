@@ -40,16 +40,16 @@ public class ClassSegmentController {
     }
 
     @PostMapping("/dto")
-    public ClassSegment createWithDTO(ClassSegmentRequest classSegmentRequest) {
+    public ClassSegment createWithDTO(@RequestBody ClassSegmentRequest classSegmentRequest) {
         return classSegmentService.createWithDTO(classSegmentRequest);
     }
 
     @PostMapping("/modelmapper")
-    public ClassSegment createWithModelMapper(ClassSegment classSegment) {
-        return classSegmentService.createWithModelMapper(classSegment);
+    public ClassSegment createWithModelMapper(@RequestBody ClassSegmentRequest classSegmentRequest) {
+        return classSegmentService.createWithModelMapper(classSegmentRequest);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}") 
     public ClassSegment update(@PathVariable Integer id, @RequestBody ClassSegment classSegment) {
         return classSegmentService.update(id, classSegment);
     }

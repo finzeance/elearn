@@ -53,17 +53,16 @@ public class ClassSegmentService {
         return classSegmentRepository.save(classSegment);
     }
 
-    // public ClassSegment createWithModelMapper(ClassSegmentRequest
-    // classSegmentRequest) {
-    // ClassSegment classSegment = modelMapper.map(classSegmentRequest,
-    // ClassSegment.class);
-    // classSegment.setKelas(kelasService.getById(classSegmentRequest.getClassId()));
-    // classSegment.setUser(userService.getById(classSegmentRequest.getUserId()));
-    // classSegment.setSegment(segmentService.getById(classSegmentRequest.getSegmentId()));
+    public ClassSegment createWithModelMapper(ClassSegmentRequest classSegmentRequest) {
+        ClassSegment classSegment = modelMapper.map(classSegmentRequest, ClassSegment.class);
+        
+        classSegment.setKelas(kelasService.getById(classSegmentRequest.getClassId()));
+        classSegment.setUser(userService.getById(classSegmentRequest.getUserId()));
+        classSegment.setSegment(segmentService.getById(classSegmentRequest.getSegmentId()));
 
-    // return classSegmentRepository.save(classSegment);
+        return classSegmentRepository.save(classSegment);
 
-    // }
+    }
 
     public ClassSegment createWithModelMapper(ClassSegment classSegment) {
         ClassSegment c = new ClassSegment();

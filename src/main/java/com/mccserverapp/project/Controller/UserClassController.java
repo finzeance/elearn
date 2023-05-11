@@ -43,8 +43,12 @@ public class UserClassController {
     public UserClass createWithDTO(@RequestBody UserClassRequest userClassRequest) {
         return userClassService.createWithDTO(userClassRequest);
     }
-    
-    
+
+    @PostMapping("/modelmapper")
+    public UserClass createWithModelMapper(@RequestBody UserClassRequest userClassRequest) {
+        return userClassService.createWithModelMapper(userClassRequest);
+    }
+
     @PutMapping("/{id}")
     public UserClass update(@PathVariable Integer id, @RequestBody UserClass userClass) {
         return userClassService.update(id, userClass);

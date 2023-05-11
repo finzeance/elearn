@@ -2,6 +2,7 @@ package com.mccserverapp.project.Service;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -12,12 +13,16 @@ import com.mccserverapp.project.Model.TaskAssignment;
 import com.mccserverapp.project.Model.dto.request.TaskAssignmentRequest;
 import com.mccserverapp.project.Repository.TaskAssignmentRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class TaskAssignmentService {
 
     private KelasService kelasService;
     private TaskService taskService;
     private TaskAssignmentRepository taskAssignmentRepository;
+    private ModelMapper modelMapper;
 
     public List<TaskAssignment> getAll() {
         return taskAssignmentRepository.findAll();
@@ -41,6 +46,15 @@ public class TaskAssignmentService {
         Task task = taskService.getById(taskAssignmentRequest.getTaskId());
         taskAssignment.setTask(task);
         return taskAssignmentRepository.save(taskAssignment);
+    }
+
+    public TaskAssignment createWithModelMapper(TaskAssignmentRequest taskAssignmentRequest) {
+        TaskAssignment taskAssignment = modelMapper.map(taskAssignmentRequest, TaskAssignment.class);
+        taskAssignment.setKelas(kelasService.getById(taskAssignmentRequest.getClassId()));
+        taskAssignment.setTask(taskService.getById(taskAssignmentRequest.getTaskId()));
+
+        return taskAssignmentRepository.save(taskAssignment);
+
     }
 
     public TaskAssignment update(Integer id, TaskAssignment taskAssignment) {
