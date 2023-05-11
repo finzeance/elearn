@@ -2,6 +2,7 @@ package com.mccserverapp.project.Controller;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,35 +21,42 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/employee")
+@PreAuthorize("hasRole('USER')")
 public class EmployeeController {
 
     private EmployeeService employeeService;
 
+    @PreAuthorize("hasAuthority('READ_USER')")
     @GetMapping
     public List<Employee> getAll() {
         return employeeService.getAll();
     }
 
+    @PreAuthorize("hasAuthority('READ_USER')")
     @GetMapping("/{id}")
     public Employee getById(@PathVariable Integer id) {
         return employeeService.getById(id);
     }
 
+    @PreAuthorize("hasAuthority('CREATE_USER')")
     @PostMapping
     public Employee create(@RequestBody Employee employee) {
         return employeeService.create(employee);
     }
 
+    @PreAuthorize("hasAuthority('CREATE_USER')")
     @PostMapping("/modelmapper")
     public Employee createWithModelMapper(@RequestBody EmployeeRequest employeeRequest) {
         return employeeService.createWithModelMapper(employeeRequest);
     }
 
+    @PreAuthorize("hasAuthority('UPDATE_USER')")
     @PutMapping("/{id}")
     public Employee update(@PathVariable Integer id, @RequestBody Employee employee) {
         return employeeService.update(id, employee);
     }
 
+    @PreAuthorize("hasAuthority('DELETE_USER')")
     @DeleteMapping("/{id}")
     public Employee delete(@PathVariable Integer id) {
         return employeeService.delete(id);
