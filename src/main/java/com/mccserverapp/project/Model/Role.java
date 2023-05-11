@@ -32,8 +32,8 @@ public class Role {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToMany(mappedBy = "role")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<User> user;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
