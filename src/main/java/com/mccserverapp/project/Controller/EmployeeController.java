@@ -21,42 +21,42 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/employee")
-@PreAuthorize("hasRole('USER')")
+@PreAuthorize("hasRole('STUDENT')")
 public class EmployeeController {
 
     private EmployeeService employeeService;
 
-    @PreAuthorize("hasAuthority('READ_USER')")
+    @PreAuthorize("hasAuthority('READ_STUDENT')")
     @GetMapping
     public List<Employee> getAll() {
         return employeeService.getAll();
     }
 
-    @PreAuthorize("hasAuthority('READ_USER')")
+    @PreAuthorize("hasAuthority('READ_STUDENT')")
     @GetMapping("/{id}")
     public Employee getById(@PathVariable Integer id) {
         return employeeService.getById(id);
     }
 
-    @PreAuthorize("hasAuthority('CREATE_USER')")
+    @PreAuthorize("hasAuthority('CREATE_STUDENT')")
     @PostMapping
     public Employee create(@RequestBody Employee employee) {
         return employeeService.create(employee);
     }
 
-    @PreAuthorize("hasAuthority('CREATE_USER')")
+    @PreAuthorize("hasAuthority('CREATE_STUDENT')")
     @PostMapping("/modelmapper")
     public Employee createWithModelMapper(@RequestBody EmployeeRequest employeeRequest) {
         return employeeService.createWithModelMapper(employeeRequest);
     }
 
-    @PreAuthorize("hasAuthority('UPDATE_USER')")
+    @PreAuthorize("hasAuthority('UPDATE_STUDENT')")
     @PutMapping("/{id}")
     public Employee update(@PathVariable Integer id, @RequestBody Employee employee) {
         return employeeService.update(id, employee);
     }
 
-    @PreAuthorize("hasAuthority('DELETE_USER')")
+    @PreAuthorize("hasAuthority('DELETE_STUDENT')")
     @DeleteMapping("/{id}")
     public Employee delete(@PathVariable Integer id) {
         return employeeService.delete(id);

@@ -19,7 +19,7 @@ import lombok.AllArgsConstructor;
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+// @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private PasswordEncoder passwordEncoder;
@@ -39,11 +39,11 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/login")
+                .antMatchers(HttpMethod.POST, "/account/login")
                 .permitAll()
-                .antMatchers(HttpMethod.POST, "/register")
-                .authenticated()
-                // .permitAll()
+                .antMatchers(HttpMethod.POST, "/account/register")
+                // .authenticated()
+                .permitAll()
                 .anyRequest()
                 .permitAll()
                 .and()

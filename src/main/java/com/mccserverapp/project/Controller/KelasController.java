@@ -22,48 +22,48 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/class")
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasRole('MANAGER')")
 public class KelasController {
 
     private KelasService kelasService;
 
-    @PreAuthorize("hasAuthority('READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_MANAGER')")
     @GetMapping
     public List<Kelas> getAll() {
         return kelasService.getAll();
     }
 
-    @PreAuthorize("hasAuthority('READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_MANAGER')")
     @GetMapping("/{id}")
     public Kelas getById(@PathVariable Integer id) {
         return kelasService.getById(id);
     }
     
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER')")
     @PostMapping
     public Kelas create(@RequestBody Kelas kelas) {
         return kelasService.create(kelas);
     }
     
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER')")
     @PostMapping("/dto")
     public Kelas createWithDTO(@RequestBody KelasRequest kelasRequest) {
         return kelasService.createWithDTO(kelasRequest);
     }
     
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER')")
     @PostMapping("/modelmapper")
     public Kelas createWithModelMapper(@RequestBody KelasRequest kelasRequest) {
         return kelasService.createWithModelMapper(kelasRequest);
     }
     
-    @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
+    @PreAuthorize("hasAuthority('UPDATE_MANAGER')")
     @PutMapping("/{id}")
     public Kelas update(@PathVariable Integer id, @RequestBody Kelas kelas) {
         return kelasService.update(id, kelas);
     }
     
-    @PreAuthorize("hasAuthority('DELETE_ADMIN')")
+    @PreAuthorize("hasAuthority('DELETE_MANAGER')")
     @DeleteMapping("/{id}")
     public Kelas delete(@PathVariable Integer id) {
         return kelasService.delete(id);

@@ -20,36 +20,36 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/program")
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasRole('MANAGER', 'TRAINER')")
 public class ProgramController {
 
     private ProgramService programService;
 
-    @PreAuthorize("hasAuthority('READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_MANAGER', 'READ_TRAINER')")
     @GetMapping
     public List<Program> getAll() {
         return programService.getAll();
     }
-    
-    @PreAuthorize("hasAuthority('READ_ADMIN')")
+
+    @PreAuthorize("hasAuthority('READ_MANAGER', 'READ_TRAINER')")
     @GetMapping("/{id}")
     public Program getById(@PathVariable Integer id) {
         return programService.getById(id);
     }
-    
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping
     public Program create(@RequestBody Program program) {
         return programService.create(program);
     }
-    
-    @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
+
+    @PreAuthorize("hasAuthority('UPDATE_MANAGER', 'UPDATE_TRAINER')")
     @PutMapping("/{id}")
     public Program update(@PathVariable Integer id, @RequestBody Program program) {
         return programService.update(id, program);
     }
-    
-    @PreAuthorize("hasAuthority('DELETE_ADMIN')")
+
+    @PreAuthorize("hasAuthority('DELETE_MANAGER', 'DELETE_TRAINER')")
     @DeleteMapping("/{id}")
     public Program delete(@PathVariable Integer id) {
         return programService.delete(id);

@@ -21,48 +21,48 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/user-class")
-@PreAuthorize("hasRole('USER', 'ADMIN')")
+@PreAuthorize("hasRole('STUDENT', 'MANAGER', 'TRAINER')")
 public class UserClassController {
 
     private UserClassService userClassService;
 
-    @PreAuthorize("hasAuthority('READ_USER', 'READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_STUDENT', 'READ_MANAGER', 'READ_TRAINER')")
     @GetMapping
     public List<UserClass> getAll() {
         return userClassService.getAll();
     }
 
-    @PreAuthorize("hasAuthority('READ_USER', 'READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_STUDENT', 'READ_MANAGER', 'READ_TRAINER')")
     @GetMapping("/{id}")
     public UserClass getById(@PathVariable Integer id) {
         return userClassService.getById(id);
     }
 
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping
     public UserClass create(@RequestBody UserClass userClass) {
         return userClassService.create(userClass);
     }
 
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping("/dto")
     public UserClass createWithDTO(@RequestBody UserClassRequest userClassRequest) {
         return userClassService.createWithDTO(userClassRequest);
     }
 
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping("/modelmapper")
     public UserClass createWithModelMapper(@RequestBody UserClassRequest userClassRequest) {
         return userClassService.createWithModelMapper(userClassRequest);
     }
 
-    @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
+    @PreAuthorize("hasAuthority('UPDATE_MANAGER', 'UPDATE_TRAINER')")
     @PutMapping("/{id}")
     public UserClass update(@PathVariable Integer id, @RequestBody UserClass userClass) {
         return userClassService.update(id, userClass);
     }
 
-    @PreAuthorize("hasAuthority('DELETE_ADMIN')")
+    @PreAuthorize("hasAuthority('DELETE_MANAGER', 'DELETE_TRAINER')")
     @DeleteMapping("/{id}")
     public UserClass delete(@PathVariable Integer id) {
         return userClassService.delete(id);

@@ -21,37 +21,37 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/role")
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasRole('MANAGER')")
 public class RoleController {
     
     private RoleService roleService;
     
     
-    @PreAuthorize("hasAuthority('READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_MANAGER')")
     @GetMapping
     public List<Role> getAll() {
         return roleService.getAll();
     }
     
-    @PreAuthorize("hasAuthority('READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_MANAGER')")
     @GetMapping("/{id}")
     public Role getById(@PathVariable Integer id) {
         return roleService.getById(id);
     }
     
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER')")
     @PostMapping
     public Role create(@RequestBody Role role) {
         return roleService.create(role);
     }
     
-    @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
+    @PreAuthorize("hasAuthority('UPDATE_MANAGER')")
     @PutMapping("/{id}")
     public Role update(@PathVariable Integer id, @RequestBody Role role) {
         return roleService.update(id, role);
     }
     
-    @PreAuthorize("hasAuthority('DELETE_ADMIN')")
+    @PreAuthorize("hasAuthority('DELETE_MANAGER')")
     @DeleteMapping("/{id}")
     public Role delete(@PathVariable Integer id) {
         return roleService.delete(id);

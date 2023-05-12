@@ -20,36 +20,36 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/segment")
-@PreAuthorize("hasRole('USER', 'ADMIN')")
+@PreAuthorize("hasRole('STUDENT', 'TRAINER')")
 public class SegmentController {
 
     private SegmentService segmentService;
 
-    @PreAuthorize("hasAuthority('READ_USER', 'READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_STUDENT', 'READ_TRAINER')")
     @GetMapping
     public List<Segment> getAll() {
         return segmentService.getAll();
     }
     
-    @PreAuthorize("hasAuthority('READ_USER', 'READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_STUDENT', 'READ_TRAINER')")
     @GetMapping("/{id}")
     public Segment getById(@PathVariable Integer id) {
         return segmentService.getById(id);
     }
     
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_TRAINER')")
     @PostMapping
     public Segment create(@RequestBody Segment segment) {
         return segmentService.create(segment);
     }
     
-    @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
+    @PreAuthorize("hasAuthority('UPDATE_TRAINER')")
     @PutMapping("/{id}")
     public Segment update(@PathVariable Integer id, @RequestBody Segment segment) {
         return segmentService.update(id, segment);
     }
     
-    @PreAuthorize("hasAuthority('DELETE_ADMIN')")
+    @PreAuthorize("hasAuthority('DELETE_TRAINER')")
     @DeleteMapping
     public Segment delete(@PathVariable Integer id) {
         return segmentService.delete(id);

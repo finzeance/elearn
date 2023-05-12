@@ -21,48 +21,48 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/task-assignment")
-@PreAuthorize("hasRole('USER', 'ADMIN')")
+@PreAuthorize("hasRole('STUDENT', 'MANAGER', 'TRAINER')")
 public class TaskAssignmentController {
 
     private TaskAssignmentService taskAssignmentService;
 
-    @PreAuthorize("hasAuthority('READ_USER', 'READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_STUDENT', 'READ_MANAGER', 'READ_TRAINER')")
     @GetMapping
     public List<TaskAssignment> getAll() {
         return taskAssignmentService.getAll();
     }
 
-    @PreAuthorize("hasAuthority('READ_USER', 'READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_STUDENT', 'READ_MANAGER', 'READ_TRAINER')")
     @GetMapping("/{id}")
     public TaskAssignment getById(@PathVariable Integer id) {
         return taskAssignmentService.getById(id);
     }
 
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping
     public TaskAssignment create(@RequestBody TaskAssignment taskAssignment) {
         return taskAssignmentService.create(taskAssignment);
     }
 
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping("/dto")
     public TaskAssignment createWithDTO(@RequestBody TaskAssignmentRequest taskAssignmentRequest) {
         return taskAssignmentService.createWithDTO(taskAssignmentRequest);
     }
 
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping("/modelmapper")
     public TaskAssignment createWithModelMapper(@RequestBody TaskAssignmentRequest taskAssignmentRequest) {
         return taskAssignmentService.createWithModelMapper(taskAssignmentRequest);
     }
 
-    @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
+    @PreAuthorize("hasAuthority('UPDATE_MANAGER', 'UPDATE_TRAINER')")
     @PutMapping("/{id}")
     public TaskAssignment update(@PathVariable Integer id, @RequestBody TaskAssignment taskAssignment) {
         return taskAssignmentService.update(id, taskAssignment);
     }
 
-    @PreAuthorize("hasAuthority('DELETE_ADMIN')")
+    @PreAuthorize("hasAuthority('DELETE_MANAGER', 'DELETE_TRAINER')")
     @DeleteMapping("/{id}")
     public TaskAssignment delete(@PathVariable Integer id) {
         return taskAssignmentService.delete(id);

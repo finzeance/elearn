@@ -21,48 +21,48 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/class-segment")
-@PreAuthorize("hasRole('USER', 'ADMIN')")
+@PreAuthorize("hasRole('STUDENT', 'MANAGER', 'TRAINER')")
 public class ClassSegmentController {
 
     private ClassSegmentService classSegmentService;
 
-    @PreAuthorize("hasAuthority('READ_USER', 'READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_STUDENT', 'READ_MANAGER', 'READ_TRAINER')")
     @GetMapping
     public List<ClassSegment> getAll() {
         return classSegmentService.getAll();
     }
-    
-    @PreAuthorize("hasAuthority('READ_USER', 'READ_ADMIN')")
+
+    @PreAuthorize("hasAuthority('READ_STUDENT', 'READ_MANAGER', 'READ_TRAINER')")
     @GetMapping("/{id}")
     public ClassSegment getById(@PathVariable Integer id) {
         return classSegmentService.getById(id);
     }
-    
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping
     public ClassSegment create(@RequestBody ClassSegment classSegment) {
         return classSegmentService.create(classSegment);
     }
-    
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping("/dto")
     public ClassSegment createWithDTO(@RequestBody ClassSegmentRequest classSegmentRequest) {
         return classSegmentService.createWithDTO(classSegmentRequest);
     }
-    
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping("/modelmapper")
     public ClassSegment createWithModelMapper(@RequestBody ClassSegmentRequest classSegmentRequest) {
         return classSegmentService.createWithModelMapper(classSegmentRequest);
     }
 
-    @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
-    @PutMapping("/{id}") 
+    @PreAuthorize("hasAuthority('UPDATE_MANAGER', 'UPDATE_TRAINER')")
+    @PutMapping("/{id}")
     public ClassSegment update(@PathVariable Integer id, @RequestBody ClassSegment classSegment) {
         return classSegmentService.update(id, classSegment);
     }
 
-    @PreAuthorize("hasAuthority('DELETE_ADMIN')")
+    @PreAuthorize("hasAuthority('DELETE_MANAGER', 'DELETE_TRAINER')")
     @DeleteMapping("/{id}")
     public ClassSegment delete(@PathVariable Integer id) {
         return classSegmentService.delete(id);

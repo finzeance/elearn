@@ -21,48 +21,48 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/task")
-@PreAuthorize("hasRole('USER', 'ADMIN')")
+@PreAuthorize("hasRole('STUDENT', 'MANAGER', 'TRAINER')")
 public class TaskController {
 
     private TaskService taskService;
 
-    @PreAuthorize("hasAuthority('READ_USER', 'READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_STUDENT', 'READ_MANAGER', 'READ_TRAINER')")
     @GetMapping
     public List<Task> getAll() {
         return taskService.getAll();
     }
-    
-    @PreAuthorize("hasAuthority('READ_USER', 'READ_ADMIN')")
+
+    @PreAuthorize("hasAuthority('READ_STUDENT', 'READ_MANAGER', 'READ_TRAINER')")
     @GetMapping("/{id}")
     public Task getById(@PathVariable Integer id) {
         return taskService.getById(id);
     }
-    
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping
     public Task create(@RequestBody Task task) {
         return taskService.create(task);
     }
 
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping("/dto")
     public Task createWithDTO(@RequestBody TaskRequest taskRequest) {
         return taskService.createWithDTO(taskRequest);
     }
-    
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping("/modelmapper")
     public Task createWithModelMapper(@RequestBody TaskRequest taskRequest) {
         return taskService.createWithModelMapper(taskRequest);
     }
-    
-    @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
+
+    @PreAuthorize("hasAuthority('UPDATE_MANAGER', 'UPDATE_TRAINER')")
     @PutMapping("/{id}")
     public Task update(@PathVariable Integer id, @RequestBody Task task) {
         return taskService.update(id, task);
     }
-    
-    @PreAuthorize("hasAuthority('DELETE_ADMIN')")
+
+    @PreAuthorize("hasAuthority('DELETE_MANAGER', 'DELETE_TRAINER')")
     @DeleteMapping("/{id}")
     public Task delete(@PathVariable Integer id) {
         return taskService.delete(id);

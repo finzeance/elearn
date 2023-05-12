@@ -21,48 +21,48 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/course")
-@PreAuthorize("hasRole('USER', 'ADMIN')")
+@PreAuthorize("hasRole('STUDENT', 'MANAGER', 'TRAINER')")
 public class CourseController {
     
     private CourseService courseService;
     
-    @PreAuthorize("hasAuthority('READ_USER', 'READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_STUDENT', 'READ_MANAGER', 'READ_TRAINER')")
     @GetMapping
     public List<Course> getAll() {
         return courseService.getAll();
     }
     
-    @PreAuthorize("hasAuthority('READ_USER', 'READ_ADMIN')")
+    @PreAuthorize("hasAuthority('READ_STUDENT', 'READ_MANAGER', 'READ_TRAINER')")
     @GetMapping("/{id}")
     public Course getById(@PathVariable Integer id) {
         return courseService.getById(id);
     }
     
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping
     public Course create(@RequestBody Course course) {
         return courseService.create(course);
     }
     
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping("/dto")
     public Course createWithDTO(@RequestBody CourseRequest courseRequest) {
         return courseService.createWithDTO(courseRequest);
     }
 
-    @PreAuthorize("hasAuthority('CREATE_ADMIN')")
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping("/modelmapper")
     public Course createWithModelMapper(@RequestBody CourseRequest courseRequest) {
         return courseService.createWithModelMapper(courseRequest);
     }
     
-    @PreAuthorize("hasAuthority('UPDATE_ADMIN')")
+    @PreAuthorize("hasAuthority('UPDATE_MANAGER', 'UPDATE_TRAINER')")
     @PutMapping("/{id}")
     public Course update(@PathVariable Integer id, @RequestBody Course course) {
         return courseService.update(id, course);
     }
     
-    @PreAuthorize("hasAuthority('DELETE_ADMIN')")
+    @PreAuthorize("hasAuthority('DELETE_MANAGER', 'DELETE_TRAINER')")
     @DeleteMapping("/{id}")
     public Course delete(@PathVariable Integer id) {
         return courseService.delete(id);

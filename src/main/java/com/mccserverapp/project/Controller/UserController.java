@@ -21,36 +21,36 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/user")
-@PreAuthorize("hasRole('USER')")
+@PreAuthorize("hasRole('STUDENT')")
 public class UserController {
 
     private UserService userService;
 
-    @PreAuthorize("hasAuthority('READ_USER')")
+    @PreAuthorize("hasAuthority('READ_STUDENT')")
     @GetMapping
     public List<User> getAll() {
         return userService.getAll();
     }
 
-    @PreAuthorize("hasAuthority('READ_USER')")
+    @PreAuthorize("hasAuthority('READ_STUDENT')")
     @GetMapping("/{id}")
     public User getById(@PathVariable Integer id) {
         return userService.getById(id);
     }
 
-    @PreAuthorize("hasAuthority('UPDATE_USER')")
+    @PreAuthorize("hasAuthority('UPDATE_STUDENT')")
     @PutMapping("/{id}")
     public User update(@PathVariable Integer id, @RequestBody User user) {
         return userService.update(id, user);
     }
 
-    @PreAuthorize("hasAuthority('DELETE_USER')")
+    @PreAuthorize("hasAuthority('DELETE_STUDENT')")
     @DeleteMapping("/{id}")
     public User delete(@PathVariable Integer id) {
         return userService.delete(id);
     }
     
-    @PreAuthorize("hasAuthority('CREATE_USER')")
+    @PreAuthorize("hasAuthority('CREATE_STUDENT')")
     @PostMapping("/{id}")
     public User addRole(@PathVariable Integer id, @RequestBody Role role) {
         return userService.addRole(id, role);

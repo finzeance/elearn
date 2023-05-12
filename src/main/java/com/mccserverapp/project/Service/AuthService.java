@@ -66,38 +66,45 @@ public class AuthService {
         }
 
         // public User create(UserRequest userRequest) {
-        //         Employee employee = modelMapper.map(userRequest, Employee.class);
-        //         User user = modelMapper.map(userRequest, User.class);
+        // Employee employee = modelMapper.map(userRequest, Employee.class);
+        // User user = modelMapper.map(userRequest, User.class);
 
-        //         // set password
-        //         user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+        // // set password
+        // user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
 
-        //         // set role
-        //         List<Role> role = new ArrayList<>();
-        //         role.add(roleService.getById(1));
-        //         user.setRole(role);
+        // // set role
+        // List<Role> role = new ArrayList<>();
+        // role.add(roleService.getById(1));
+        // user.setRole(role);
 
-        //         employee.setUser(user);
-        //         user.setEmployee(employee);
-        //         return userRepository.save(user);
+        // employee.setUser(user);
+        // user.setEmployee(employee);
+        // return userRepository.save(user);
         // }
 
         public User create(RegisterRequest registerRequest) {
-                //harus ditambahin try catch
-                Employee employee = modelMapper.map(registerRequest, Employee.class);
-                User user = modelMapper.map(registerRequest, User.class);
+                // harus ditambahin try catch
+                if (userRepository.findByUsername(registerRequest.getUsername()).isEmpty()) {
+                        try {
+                                Employee employee = modelMapper.map(registerRequest, Employee.class);
+                                User user = modelMapper.map(registerRequest, User.class);
 
-                // set password
-                user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+                                // set password
+                                user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
 
-                // set role
-                List<Role> role = new ArrayList<>();
-                role.add(roleService.getById(1));
-                user.setRole(role);
+                                // set role
+                                List<Role> role = new ArrayList<>();
+                                role.add(roleService.getById(1));
+                                user.setRole(role);
 
-                employee.setUser(user);
-                user.setEmployee(employee);
-                return userRepository.save(user);
+                                employee.setUser(user);
+                                user.setEmployee(employee);
+                                return userRepository.save(user);
+                        } catch (Exception e) {
+                                return null;
+                        }
+                }
+                return null;
         }
 
 }
