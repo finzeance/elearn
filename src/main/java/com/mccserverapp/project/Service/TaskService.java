@@ -5,7 +5,9 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.mccserverapp.project.Model.Course;
 import com.mccserverapp.project.Model.Task;
@@ -20,6 +22,7 @@ public class TaskService {
 
     private ModelMapper modelMapper;
     private CourseService courseService;
+    private FileStorageService fileStorageService;
     private TaskRepository taskRepository;
 
     public List<Task> getAll() {
@@ -46,8 +49,14 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public Task createWithModelMapper(TaskRequest taskRequest) {
+    public Task createWithModelMapper(TaskRequest taskRequest, MultipartFile file) {
         Task task = modelMapper.map(taskRequest, Task.class);
+        String fileName = fileStorageService.storeFile(file);
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/downloadFile/")
+                .path(fileName)
+                .toUriString();
+        task.setFile(fileDownloadUri);
         task.setCourse(courseService.getById(taskRequest.getCourseId()));
         return taskRepository.save(task);
     }
