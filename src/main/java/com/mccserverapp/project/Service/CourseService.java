@@ -5,7 +5,9 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.mccserverapp.project.Model.Course;
 import com.mccserverapp.project.Model.Segment;
@@ -19,6 +21,7 @@ import lombok.AllArgsConstructor;
 public class CourseService {
 
     private ModelMapper modelMapper;
+    private FileStorageService fileStorageService;
     private SegmentService segmentService;
     private CourseRepository courseRepository;
 
@@ -47,8 +50,14 @@ public class CourseService {
         return courseRepository.save(course);
     }
 
-    public Course createWithModelMapper(CourseRequest courseRequest) {
+    public Course createWithModelMapper(CourseRequest courseRequest, MultipartFile file) {
         Course course = modelMapper.map(courseRequest, Course.class);
+        String fileName = fileStorageService.storeFile(file);
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/downloadFile/")
+                .path(fileName)
+                .toUriString();
+        course.setFile(fileDownloadUri);
         course.setSegment(segmentService.getById(courseRequest.getSegmentId()));
         return courseRepository.save(course);
     }
