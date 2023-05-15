@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="Fragments/template :: head"></head>
+
+<body>
+    <!-- Spinner Start -->
+    <div th:replace="Fragments/template :: spinner"></div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a th:href="@{/home}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>MCC E-LEARNING</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <!-- <a th:href="@{/home}" class="nav-item nav-link active">Home</a> -->
+                <!-- <a th:href="@{/kelastrainer}" class="nav-item nav-link">Class</a> -->
+                <a th:href="@{/profiletrainer}" class="nav-item nav-link">Profile</a>
+                <!-- <a th:href="@{/course}" class="nav-item nav-link">Courses</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Segments</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a th:href="@{/segment}" class="dropdown-item">Segment 1</a>
+                        <a th:href="@{/segment}" class="dropdown-item">Segment 2</a>
+                        <a th:href="@{/segment}" class="dropdown-item">Segment 3</a>
+                        <a th:href="@{/segment}" class="dropdown-item">Segment 4</a>
+                    </div>
+                </div>
+                <a th:href="@{/task}" class="nav-item nav-link">Task</a> -->
+            </div>
+            <a th:href="@{/home}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout<i
+                    class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">MCC CLASS</h1>
+                    <nav aria-label="breadcrumb">
+                        <!-- <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a class="text-white" href="#">Add Class</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="#">Update Class</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Delete Class</li>
+                        </ol> -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    <div class="container text-center">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Choose The Class</h6>
+                <!-- <h1 class="mb-5">MCC Class</h1> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Class MCC -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">MCC JAVA 72</h5>
+                            <!-- <p>Start Date</p>
+                            <p>End Date</p> -->
+                            <p>Quota</p>
+                            <p>Program</p>
+                            <!-- <p><button type="button" class="btn btn-danger" disabled>Not Available</button></p> -->
+                            <p>
+                                <i class="far fa-edit" style='font-size:24px' data-bs-toggle="modal"
+                                    data-bs-target="#updateclass"></i>
+                                <a href=""><i class="fa fa-trash" style='font-size:24px;color: red;'></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">MCC JAVA 74</h5>
+                            <!-- <p>Start Date</p>
+                            <p>End Date</p> -->
+                            <p>Quota</p>
+                            <p>Program</p>
+                            <!-- <p><button type="button" class="btn btn-danger" disabled>Not Available</button></p> -->
+                            <p>
+                                <i class="far fa-edit" style='font-size:24px' data-bs-toggle="modal"
+                                    data-bs-target="#updateclass"></i>
+                                <a href=""><i class="fa fa-trash" style='font-size:24px;color: red;'></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <a th:href="@{/segmenttrainer}"><i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                                <h5 class="mb-3">MCC JAVA 76</h5>
+                                <!-- <p>Start Date</p>
+                            <p>End Date</p> -->
+                                <p>Quota</p>
+                                <p>Program</p>
+                                <!-- <p><button type="button" class="btn btn-primary">Available</button></p> -->
+                                <p>
+                            </a>
+                            <i class="far fa-edit" style='font-size:24px' data-bs-toggle="modal"
+                                data-bs-target="#updateclass"></i>
+                            <a href=""><i class="fa fa-trash" style='font-size:24px;color: red;'></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">MCC JAVA 78</h5>
+                            <!-- <p>Start Date</p>
+                            <p>End Date</p> -->
+                            <p>Quota</p>
+                            <p>Program</p>
+                            <!-- <p><a th:href="@{/segmenttrainer}"><button type="button"
+                                        class="btn btn-primary">Available</button></a></p> -->
+                            <p>
+                                <i class="far fa-edit" style='font-size:24px' data-bs-toggle="modal"
+                                    data-bs-target="#updateclass"></i>
+                                <a href=""><i class="fa fa-trash" style='font-size:24px;color: red;'></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-grid gap-2 col-3 mx-auto">
+        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#addclass">ADD
+            CLASS</button>
+    </div>
+    <!-- Class MCC -->
+
+    <!-- Modal Add Class Start -->
+    <div class="modal fade" id="addclass" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Class</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Class Name</label>
+                        <input type="text" class="form-control" id="class-in-name" placeholder="name of class"
+                            required />
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="name" class="form-label">Start Date</label>
+                        <input type="date" class="form-control" id="class-in-startdate"
+                            placeholder="start date of class" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">End Date</label>
+                        <input type="date" class="form-control" id="class-in-enddate" placeholder="end date of class"
+                            required />
+                    </div> -->
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Quota</label>
+                        <input type="number" class="form-control" id="class-in-quota" placeholder="quota of class"
+                            required />
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="name" class="form-label">Status</label>
+                        <select class="form-control" name="status" id="class-in-status">
+                            <option value="0" selected disabled>Please choose the status</option>
+                            <option value="0">Not Available</option>
+                            <option value="1">Available</option>
+                        </select>
+                    </div> -->
+                    <div class="mb-3">
+                        <label for="program" class="form-label">Program</label>
+                        <select class="form-control" name="program" id="class-in-program">
+                            <option value="0" selected disabled>Please choose the program!</option>
+                            <option value="1">MCC JAVA</option>
+                            <option value="2">MCC .NET</option>
+                            <option value="3">Security Camp</option>
+                            <option value="4">Data Science</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Add Class End -->
+
+    <!-- Modal Update Class Start -->
+    <div class="modal fade" id="updateclass" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Class</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Class Name</label>
+                        <input type="text" class="form-control" id="class-in-name" value="name of class" required />
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="name" class="form-label">Start Date</label>
+                        <input type="date" class="form-control" id="class-in-startdate" value="start date of class"
+                            required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">End Date</label>
+                        <input type="date" class="form-control" id="class-in-enddate" value="end date of class"
+                            required />
+                    </div> -->
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Quota</label>
+                        <input type="number" class="form-control" id="class-in-quota" value="0" required />
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="name" class="form-label">Status</label>
+                        <select class="form-control" name="status" id="class-in-status">
+                            <option value="0" selected disabled>Please choose the status</option>
+                            <option value="0">Not Available</option>
+                            <option value="1">Available</option>
+                        </select>
+                    </div> -->
+                    <div class="mb-3">
+                        <label for="program" class="form-label">Program</label>
+                        <select class="form-control" name="program" id="class-in-program">
+                            <option value="0" selected disabled>Please choose the program!</option>
+                            <option value="1">MCC JAVA</option>
+                            <option value="2">MCC .NET</option>
+                            <option value="3">Security Camp</option>
+                            <option value="4">Data Science</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Update Class End -->
+
+    <!-- Footer Start -->
+    <div th:replace="Fragments/template :: footer"></div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a th:replace="Fragments/template :: back"></a>
+
+    <!-- JavaScript Libraries and js -->
+    <div th:replace="Fragments/template :: script"></div>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="Fragments/template :: head"></head>
+
+<body>
+    <!-- Spinner Start -->
+    <div th:replace="Fragments/template :: spinner"></div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a th:href="@{/home}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>MCC E-LEARNING</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <!-- <a th:href="@{/home}" class="nav-item nav-link active">Home</a> -->
+                <!-- <a th:href="@{/kelas}" class="nav-item nav-link">Class</a> -->
+                <!-- <a th:href="@{/course}" class="nav-item nav-link">Courses</a> -->
+                <!-- <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Segments</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a th:href="@{/segment}" class="dropdown-item">Segment 1</a>
+                        <a th:href="@{/segment}" class="dropdown-item">Segment 2</a>
+                        <a th:href="@{/segment}" class="dropdown-item">Segment 3</a>
+                        <a th:href="@{/segment}" class="dropdown-item">Segment 4</a>
+                    </div>
+                </div> -->
+                <!-- <a th:href="@{/task}" class="nav-item nav-link">Task</a> -->
+                <a th:href="@{/profile}" class="nav-item nav-link">Profile</a>
+            </div>
+            <a th:href="@{/home}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout<i
+                    class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">Course Segment</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <!-- <li class="breadcrumb-item"><a class="text-white" href="#">Segment 1</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="#">Segment 2</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="#">Segment 3</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="#">Segment 4</a></li> -->
+                            <!-- <li class="breadcrumb-item text-white active" aria-current="page">Segment 3</li> -->
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Categories Start -->
+    <div class="container-xxl py-5 category">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Choose The Course Segments</h6>
+                <!-- <h1 class="mb-5">Courses Segments</h1> -->
+            </div>
+
+            <!-- Segment Start -->
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="service-item text-center pt-3">
+                                <a th:href="@{/course}"><div class="p-4">
+                                    <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                                    <h5 class="mb-3">Segment 1</h5>
+                                    <p>Deskripsi</p>
+                                    <!-- <p>
+                                        <i class="far fa-edit" style='font-size:24px' data-bs-toggle="modal"
+                                            data-bs-target="#updateclass"></i>
+                                        <a href=""><i class="fa fa-trash" style='font-size:24px;color: red;'></i></a>
+                                    </p> -->
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="service-item text-center pt-3">
+                                <a th:href="@{/course}"><div class="p-4">
+                                    <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                                    <h5 class="mb-3">Segment 2</h5>
+                                    <p>Deskripsi</p>
+                                    <!-- <p>
+                                        <i class="far fa-edit" style='font-size:24px' data-bs-toggle="modal"
+                                            data-bs-target="#updateclass"></i>
+                                        <a href=""><i class="fa fa-trash" style='font-size:24px;color: red;'></i></a>
+                                    </p> -->
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="service-item text-center pt-3">
+                                <a th:href="@{/course}"><div class="p-4">
+                                    <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                                    <h5 class="mb-3">Segment 3</h5>
+                                    <p>Deskripsi</p>
+                                    <!-- <p>
+                                        <i class="far fa-edit" style='font-size:24px' data-bs-toggle="modal"
+                                            data-bs-target="#updateclass"></i>
+                                        <a href=""><i class="fa fa-trash" style='font-size:24px;color: red;'></i></a>
+                                    </p> -->
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                            <div class="service-item text-center pt-3">
+                                <a th:href="@{/course}"><div class="p-4">
+                                    <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                                    <h5 class="mb-3">Segment 4</h5>
+                                    <p>Deskripsi</p>
+                                    <!-- <p>
+                                        <i class="far fa-edit" style='font-size:24px' data-bs-toggle="modal"
+                                            data-bs-target="#updateclass"></i>
+                                        <a href=""><i class="fa fa-trash" style='font-size:24px;color: red;'></i></a>
+                                    </p> -->
+                                </div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="d-grid gap-2 col-3 mx-auto">
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#addclass">ADD
+                    CLASS</button>
+            </div> -->
+            <!-- Segment End -->
+        </div>
+    </div>
+    <!-- Categories Start -->
+
+    <!-- Footer Start -->
+    <div th:replace="Fragments/template :: footer"></div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a th:replace="Fragments/template :: back"></a>
+
+
+    <!-- JavaScript Libraries and js -->
+    <div th:replace="Fragments/template :: script"></div>
+</body>
+
+</html>

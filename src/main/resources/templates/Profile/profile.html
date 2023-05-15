@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="Fragments/template :: head"></head>
+
+<body>
+    <!-- Spinner Start -->
+    <div th:replace="Fragments/template :: spinner"></div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a th:href="@{/home}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>MCC E-LEARNING</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <!-- <a th:href="@{/home}" class="nav-item nav-link active">Home</a> -->
+                <a th:href="@{/segment}" class="nav-item nav-link">Segments</a>
+                <!-- <a th:href="@{/course}" class="nav-item nav-link">Courses</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Segments</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a th:href="@{/segment}" class="dropdown-item">Segment 1</a>
+                        <a th:href="@{/segment}" class="dropdown-item">Segment 2</a>
+                        <a th:href="@{/segment}" class="dropdown-item">Segment 3</a>
+                        <a th:href="@{/segment}" class="dropdown-item">Segment 4</a>
+                    </div>
+                </div>
+                <a th:href="@{/task}" class="nav-item nav-link">Task</a>
+                <a th:href="@{/profile}" class="nav-item nav-link">Profile</a> -->
+            </div>
+            <a th:href="@{/home}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout<i
+                    class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Form Profile Start -->
+    <section class="vh-100" style="background-color: #f4f5f7;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-lg-6 mb-4 mb-lg-0">
+                    <div class="card mb-3" style="border-radius: .5rem;">
+                        <div class="row g-0">
+                            <div class="col-md-4 text-center text-white"
+                                style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; background-color: #1c2766;">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                    alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                                <h5 style="color: white;">Marie Horwitz</h5>
+                                <p>MCC Participants</p>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body p-4">
+                                    <div class="row pt-1">
+                                        <div class="col-6">
+                                            <h6>Profile</h6>
+                                        </div>
+                                        <div class="col-6 d-grid gap-2 d-md-flex justify-content-md-end">
+                                            <i class='fas fa-edit' data-bs-toggle="modal"
+                                                data-bs-target="#updateprofile"></i>
+                                        </div>
+                                    </div>
+                                    <hr class="mt-0 mb-4">
+                                    <div class="row pt-1">
+                                        <div class="col-6 mb-3">
+                                            <h6>Email</h6>
+                                            <p class="email">info@example.com</p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>Phone</h6>
+                                            <p class="phone">123 456 789</p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>NIK</h6>
+                                            <p class="nik">123456789</p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>Status</h6>
+                                            <p class="status">Active</p>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-1">
+                                        <div class="col-6">
+                                            <h6>Account</h6>
+                                        </div>
+                                        <div class="col-6 d-grid gap-2 d-md-flex justify-content-md-end">
+                                            <i class='fas fa-edit' data-bs-toggle="modal"
+                                                data-bs-target="#updateaccount"></i>
+                                        </div>
+                                    </div>
+                                    <hr class="mt-0 mb-4">
+                                    <div class="row pt-1">
+                                        <div class="col-6 mb-3">
+                                            <h6>Username</h6>
+                                            <p class="text">xxxx</p>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <h6>Password</h6>
+                                            <p class="password">xxxxx</p>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="d-flex justify-content-start">
+                                        <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                                        <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                                        <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Form Profile End -->
+
+    <!-- Modal Update Profile Start -->
+    <div class="modal fade" id="updateprofile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Profile</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="profile-in-name" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="profile-in-email" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="number" class="form-control" id="profile-in-phone" value="phone of profile"
+                            required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="nik" class="form-label">NIK</label>
+                        <input type="number" class="form-control" id="profile-in-nik" value="nik of profile" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Update Profile End -->
+
+    <!-- Modal Update Account Start -->
+    <div class="modal fade" id="updateaccount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Account</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="account-in-username" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="account-in-password" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Update Account End -->
+
+
+    <!-- Footer Start -->
+    <div th:replace="Fragments/template :: footer"></div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a th:replace="Fragments/template :: back"></a>
+
+    <!-- JavaScript Libraries and js -->
+    <div th:replace="Fragments/template :: script"></div>
+</body>
+
+</html>
