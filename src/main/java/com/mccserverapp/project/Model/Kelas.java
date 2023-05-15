@@ -40,7 +40,7 @@ public class Kelas {
     @Column(name = "quota", nullable = false)
     private Integer quota;
 
-    private Boolean statusActive = true;
+    private boolean statusActive = true;
 
     @OneToMany(mappedBy = "kelas")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
