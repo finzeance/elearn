@@ -65,9 +65,15 @@ public class TaskController {
     }
 
     @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
+    @PostMapping("/modelmapper/multifile")
+    public Task createWithModelMapperWithMultifile(TaskRequest taskRequest, @RequestParam MultipartFile file) {
+        return taskService.createWithModelMapperWithMultifile(taskRequest, file);
+    }
+    
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
     @PostMapping("/modelmapper")
-    public Task createWithModelMapper(TaskRequest taskRequest, @RequestParam MultipartFile file) {
-        return taskService.createWithModelMapper(taskRequest, file);
+    public Task createWithModelMapper(@RequestBody TaskRequest taskRequest) {
+        return taskService.createWithModelMapper(taskRequest);
     }
 
     @PreAuthorize("hasAuthority('UPDATE_MANAGER', 'UPDATE_TRAINER')")

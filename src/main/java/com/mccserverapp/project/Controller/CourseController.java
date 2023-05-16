@@ -65,9 +65,15 @@ public class CourseController {
     }
 
     @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
-    @PostMapping("/modelmapper")
+    @PostMapping("/modelmapper/file")
     public Course createWithModelMapper(CourseRequest courseRequest, @RequestParam MultipartFile file) {
-        return courseService.createWithModelMapper(courseRequest, file);
+        return courseService.createWithModelMapperWithMultifile(courseRequest, file);
+    }
+    
+    @PreAuthorize("hasAuthority('CREATE_MANAGER', 'CREATE_TRAINER')")
+    @PostMapping("/modelmapper")
+    public Course createWithModelMapper(@RequestBody CourseRequest courseRequest) {
+        return courseService.createWithModelMapper(courseRequest);
     }
 
     @PreAuthorize("hasAuthority('UPDATE_MANAGER', 'UPDATE_TRAINER')")

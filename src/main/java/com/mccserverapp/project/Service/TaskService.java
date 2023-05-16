@@ -49,7 +49,7 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public Task createWithModelMapper(TaskRequest taskRequest, MultipartFile file) {
+    public Task createWithModelMapperWithMultifile(TaskRequest taskRequest, MultipartFile file) {
         Task task = modelMapper.map(taskRequest, Task.class);
         String fileName = fileStorageService.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -57,6 +57,12 @@ public class TaskService {
                 .path(fileName)
                 .toUriString();
         task.setFile(fileDownloadUri);
+        task.setCourse(courseService.getById(taskRequest.getCourseId()));
+        return taskRepository.save(task);
+    }
+    
+    public Task createWithModelMapper(TaskRequest taskRequest) {
+        Task task = modelMapper.map(taskRequest, Task.class);
         task.setCourse(courseService.getById(taskRequest.getCourseId()));
         return taskRepository.save(task);
     }

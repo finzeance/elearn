@@ -50,7 +50,7 @@ public class CourseService {
         return courseRepository.save(course);
     }
 
-    public Course createWithModelMapper(CourseRequest courseRequest, MultipartFile file) {
+    public Course createWithModelMapperWithMultifile(CourseRequest courseRequest, MultipartFile file) {
         Course course = modelMapper.map(courseRequest, Course.class);
         String fileName = fileStorageService.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -58,6 +58,12 @@ public class CourseService {
                 .path(fileName)
                 .toUriString();
         course.setFile(fileDownloadUri);
+        course.setSegment(segmentService.getById(courseRequest.getSegmentId()));
+        return courseRepository.save(course);
+    }
+
+    public Course createWithModelMapper(CourseRequest courseRequest) {
+        Course course = modelMapper.map(courseRequest, Course.class);
         course.setSegment(segmentService.getById(courseRequest.getSegmentId()));
         return courseRepository.save(course);
     }
