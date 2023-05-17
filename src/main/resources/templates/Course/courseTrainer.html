@@ -85,7 +85,7 @@
                 </div>
 
                 <ul>
-                    <li>Deskripsi Materi</li>
+                    <li>Description</li>
                     <li>File Materi (ex: Java.ppt)</li>
                     <li>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -108,8 +108,8 @@
                         <ul>
                             <li>Deskripsi tugas</li>
                             <li>File tugas</li>
-                            <li>Start Date</li>
-                            <li>End Date</li>
+                            <li>Start Time</li>
+                            <li>End Time</li>
 
                         </ul>
                     </li>
@@ -119,9 +119,9 @@
     <!-- List Materi End -->
 
     <!-- Modal Add Course Start -->
-    <div class="modal fade" id="addcourse" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade bd-example-modal-lg" id="addcourse" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Course</h1>
@@ -135,8 +135,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="course-in-description"
-                            placeholder="description of course" required />
+                        <textarea id="myTextarea" class="form-control course-in-description" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="file" class="form-label">File</label>
@@ -154,9 +153,9 @@
     <!-- Modal Add Course End -->
 
     <!-- Modal Update Course Start -->
-    <div class="modal fade" id="updatecourse" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade bd-example-modal-lg" id="updatecourse" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Course</h1>
@@ -169,8 +168,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="course-in-description" value="description of course"
-                            required />
+                        <textarea id="myTextarea" class="form-control course-in-description" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="file" class="form-label">File</label>
@@ -214,14 +212,14 @@
                         </select>
                     </div> -->
                     <div class="mb-3">
-                        <label for="startdate" class="form-label">Start Date</label>
-                        <input type="date" class="form-control" id="task-in-startdate" placeholder="startdate of task"
-                            required />
+                        <label for="startdate" class="form-label">Start Time</label>
+                        <input type="datetime-local" class="form-control" id="task-in-startdate"
+                            placeholder="startdate of task" required />
                     </div>
                     <div class="mb-3">
-                        <label for="enddate" class="form-label">End date</label>
-                        <input type="date" class="form-control" id="task-in-enddate" placeholder="enddate of task"
-                            required />
+                        <label for="enddate" class="form-label">End Time</label>
+                        <input type="datetime-local" class="form-control" id="task-in-enddate"
+                            placeholder="enddate of task" required />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -260,14 +258,14 @@
                         </select>
                     </div> -->
                     <div class="mb-3">
-                        <label for="startdate" class="form-label">Start Date</label>
-                        <input type="date" class="form-control" id="task-in-startdate" placeholder="startdate of task"
-                            required />
+                        <label for="startdate" class="form-label">Start Time</label>
+                        <input type="datetime-local" class="form-control" id="task-in-startdate"
+                            placeholder="startdate of task" required />
                     </div>
                     <div class="mb-3">
-                        <label for="enddate" class="form-label">End date</label>
-                        <input type="date" class="form-control" id="task-in-enddate" placeholder="enddate of task"
-                            required />
+                        <label for="enddate" class="form-label">End Time</label>
+                        <input type="datetime-local" class="form-control" id="task-in-enddate"
+                            placeholder="enddate of task" required />
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

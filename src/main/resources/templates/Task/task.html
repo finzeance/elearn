@@ -76,9 +76,9 @@
     <!-- Task End -->
 
     <!-- Modal Create -->
-    <div class="modal fade" id="addtask" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade bd-example-modal-lg" id="addtask" tabindex="-1" role="dialog"
+        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Add Task</h5>
@@ -87,18 +87,15 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="name" class="form-label text-center">Name</label>
-                        <input type="text" class="form-control" id="task-in-name" placeholder="name of task"
-                            required />
+                        <input type="text" class="form-control" id="task-in-name" placeholder="name of task" required />
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label text-center" >Description</label>
-                        <input type="text" class="form-control" id="task-in-description"  placeholder="description of task"
-                            required />
+                        <label for="description" class="form-label text-center">Description</label>
+                        <textarea id="myTextarea" class="form-control course-in-description" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="file" class="form-label text-center">File</label>
-                        <input type="file" class="form-control" id="task-in-file" placeholder="file of task"
-                            required />
+                        <input type="file" class="form-control" id="task-in-file" placeholder="file of task" required />
                     </div>
                     <div class="mb-3">
                         <label for="courseid" class="form-label text-center">Course</label>

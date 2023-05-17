@@ -37,6 +37,12 @@
 
     <!-- Template Stylesheet Course -->
     <link th:href="@{css/course.css}" rel="stylesheet">
+
+    <!-- Template Rich Text Course -->
+    <script th:src="@{tinymce/tinymce.min.js}"></script>
+    <script>tinymce.init({
+            selector: '#myTextarea'
+        });</script>
 </head>
 
 <body>
