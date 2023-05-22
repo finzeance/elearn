@@ -18,8 +18,8 @@ public class ProgramController {
 
     @GetMapping("/program")
     public String index(Model model) {
-        // List<Program> programs = programService.getAll();
-        // model.addAttribute("Program", programs);
+        List<Program> programs = programService.getAll();
+        model.addAttribute("program", programs);
         return "Program/addProgram";
     }
 
@@ -31,7 +31,7 @@ public class ProgramController {
     @PostMapping("/program")
     public String create(Program program) {
         programService.create(program);
-        return "redirect:/Program";
+        return "redirect:/program";
     }
 
     @GetMapping("/programupdate/{id}")
@@ -43,12 +43,12 @@ public class ProgramController {
     @PutMapping("/program/{id}")
     public String update(@PathVariable int id, Program program) {
         programService.update(id, program);
-        return "redirect:/Program";
+        return "redirect:/program";
     }
 
     @DeleteMapping("/program/{id}")
     public String delete(@PathVariable int id) {
         programService.delete(id);
-        return "redirect:/Program";
+        return "redirect:/program";
     }
 }

@@ -15,12 +15,12 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/css/**", "/js/**").permitAll()
+                .antMatchers("/css/**", "/js/**", "/lib/**", "/vendor/**").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
                 .anyRequest()
-                .permitAll()
-                // .authenticated()
+                // .permitAll()
+                .authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")

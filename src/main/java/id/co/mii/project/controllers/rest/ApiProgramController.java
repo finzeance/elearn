@@ -1,7 +1,7 @@
 package id.co.mii.project.controllers.rest;
 
 import lombok.AllArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
+// import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +18,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/program")
 @AllArgsConstructor
-@PreAuthorize("hasRole('xxx')")
+// @PreAuthorize("hasRole('USER')")
 public class ApiProgramController {
     private ProgramService programService;
 
@@ -32,6 +32,7 @@ public class ApiProgramController {
         return programService.getById(id);
     }
 
+    // @PreAuthorize("hasAuthority('CREATE_USER')")
     @PostMapping
     public Program create(@RequestBody @Valid Program program) {
         return programService.create(program);
